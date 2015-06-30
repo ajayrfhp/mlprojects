@@ -1,6 +1,5 @@
 from math import sqrt
 def similarityDistance(data,person1,person2):
-
 	disimiliarFlag = True
 	for movie1 in data[person1]:
 		if movie1 in data[person2]:
@@ -17,7 +16,6 @@ def similarityDistance(data,person1,person2):
 					
 def mostSimilar(data,person1):
 	persons = data.keys()
-
 	scores = {}
 	for person in persons:
 		if(person!=person1):
@@ -30,7 +28,6 @@ def mostSimilar(data,person1):
 
 
 def pearsonDistance(data,person1,person2):
-
 	disimiliarFlag = True
 	for movie1 in data[person1]:
 		if movie1 in data[person2]:
@@ -76,6 +73,19 @@ def getListOfMovies(data):
 	return listOfMovies		
 
 
+def flipPersonToMovie(data):
+	movies = getListOfMovies(data)
+	result = {}
+	for movie in movies:
+		thisResult = {}
+		for person in data.keys():
+			if movie in data[person].keys():
+				thisResult[person] = data[person][movie]
+		result[movie] = thisResult
+	return result			
+
+
+
 
 def getRecommendations(data,person):
 	movies = getListOfMovies(data)
@@ -83,6 +93,8 @@ def getRecommendations(data,person):
 	for movie in movies:
 		if movie not in data[person].keys():
 			unWatchedMovies.append(movie)
+	
+
 
 	movieRecommendations = {}
 	for movie in unWatchedMovies:
@@ -97,8 +109,7 @@ def getRecommendations(data,person):
 				#print str(similarityIndex)+str(person1)
 				thisMovieRating += similarityIndex*data[person1][movie]
 				cnt += similarityIndex
-		thisMovieRating = thisMovieRating /cnt		
-			
+		thisMovieRating = thisMovieRating /cnt			
 		movieRecommendations[movie] = thisMovieRating
 
 

@@ -1,6 +1,5 @@
 import data
 import functions 
-import model
 
 
 
@@ -13,4 +12,14 @@ person2 = "Toby"
 
 #print functions.getListOfMovies(data.critics)
 
-print functions.getRecommendations(data.critics,person2)
+#print functions.getRecommendations(data.critics,person2)
+
+
+productData = functions.flipPersonToMovie(data.critics)
+
+
+
+print functions.mostSimilar(productData,"Superman Returns")
+
+
+
