@@ -95,7 +95,6 @@ def getRecommendations(data,person):
 			unWatchedMovies.append(movie)
 	
 
-
 	movieRecommendations = {}
 	for movie in unWatchedMovies:
 		cnt = 0
@@ -103,14 +102,15 @@ def getRecommendations(data,person):
 		for person1 in data.keys():
 			similarityIndex = pearsonDistance(data,person,person1)
 			if(similarityIndex<0):
-				break
+				continue
 			
 			if(person1!=person and movie in data[person1].keys() ):
 				#print str(similarityIndex)+str(person1)
 				thisMovieRating += similarityIndex*data[person1][movie]
 				cnt += similarityIndex
-		thisMovieRating = thisMovieRating /cnt			
-		movieRecommendations[movie] = thisMovieRating
+		if(cnt>0):
+			thisMovieRating = thisMovieRating /cnt			
+			movieRecommendations[movie] = thisMovieRating
 
 
 
