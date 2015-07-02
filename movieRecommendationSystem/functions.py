@@ -16,10 +16,11 @@ def similarityDistance(data,person1,person2):
 					
 def mostSimilar(data,person1):
 	persons = data.keys()
+
 	scores = {}
 	for person in persons:
 		if(person!=person1):
-			thisDistance = pearsonDistance(data,person1,person)
+			thisDistance = similarityDistance(data,person1,person)
 			scores[person] = thisDistance
 
 	sorted(scores.items(),key=lambda scores:scores[1])		
@@ -29,6 +30,7 @@ def mostSimilar(data,person1):
 
 def pearsonDistance(data,person1,person2):
 	disimiliarFlag = True
+	
 	for movie1 in data[person1]:
 		if movie1 in data[person2]:
 			disimiliarFlag = False
@@ -86,6 +88,14 @@ def flipPersonToMovie(data):
 
 
 
+def computeItemSimilarities(data):
+	movies = getListOfMovies(data)
+
+	itemSimiliarty = {}
+	for movie in data.keys():
+			itemSimiliarty[movie] = mostSimilar(data,movie)
+	return itemSimiliarty
+		
 
 def getRecommendations(data,person):
 	movies = getListOfMovies(data)
@@ -116,4 +126,34 @@ def getRecommendations(data,person):
 
 	return movieRecommendations	 
 	
+
+def itemBasedFiltering(data,person,itemSimiliarty):
+	
+	movies = getListOfMovies(data)
+	persons = data.keys()
+	unWatchedMovies = []
+	watchedMovies = []
+	for movie in movies:
+		if movie not in data[person].keys():
+			unWatchedMovies.append(movie)
+		else:
+			watchedMovies.append(movie)
+
+	recommendations = {}
+	for umovie in unWatchedMovies:
+		movieRating = 0
+		normalizingFactor = 0
+		for movie in watchedMovies:
+			movieRating += 	data[person][movie]*itemSimiliarty[umovie][movie]
+			normalizingFactor +=itemSimiliarty[umovie][movie]
+
+		movieRating /= normalizingFactor
+		recommendations[umovie] = movieRating
+	return recommendations			
+			
+
+
+
+	return unWatchedMovies		
+
 

@@ -3,6 +3,7 @@
      python -m movieRecommendationSystem
 
 ##What it does ?
+* User Based collabarative filtering
 * how much will one user like a particular  movie
 * Find similar movies
 * Out of the people Who havent seen the movie Who will like this 
