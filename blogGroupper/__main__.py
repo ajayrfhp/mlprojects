@@ -1,17 +1,35 @@
 import feedparser
 import re
-import parser
-
-url = 'http://feeds.feedburner.com/37signals/beMH'
-
-d = feedparser.parse(url)
+from  parser import *
+import json
 
 
-html =  d['entries'][0]['summary']
 
 
-title,content = getFeatures(html)
 
-print title
-print content
 
+data = {}
+
+def generateFeatures():
+	with open("blogGroupper/feedList.txt","r") as f:	
+		urls = f.readlines()
+		for url in urls:
+			try :
+				title,featureVector =  generateFeed(url)
+				data[title] = featureVector
+				
+			except AttributeError:
+				continue
+			
+			print urls.index(url)
+			
+	with open ('blogGroupper/feature.json','wb') as f2:
+		json.dump(json.dumps(data),f2)
+
+
+
+with open('blogGroupper/feature.json') as f:
+     data = json.loads(json.load(f))
+
+
+print data.keys()
