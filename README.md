@@ -14,7 +14,7 @@
 ######Clustering
 * Kmeans Clustering .
 
-![KMeans Cluster figure]( clustering/clutser.png "Cluster Centres Creation")
+![KMeans Cluster figure]( clustering/cluster.png "Cluster Centres Creation")
 
 
 ##REFERENCECS
