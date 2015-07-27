@@ -12,7 +12,7 @@ data = numpy.array(data)
 
 buildModel(data,2)
 
-p.show()
+#p.show()
 
 
 
