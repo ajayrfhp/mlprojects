@@ -38,7 +38,7 @@ def generateFeatures():
 def getClosestFeatures(data):
 	data = np.tril(data)
 	maxValue = np.tril(data).max()
-	indices = [((i,j) if data[i][j]==maxValue else (-1,-1) ) for j in range(data.shape[1])    for i in range(data.shape[0])  ]
+	indices = [((i,j) if data[i][j]==maxValue else (-1,-1) ) for j in range(data.shape[1]) for i in range(data.shape[0])  ]
 	indices = filter(lambda a:a!=(-1,-1),indices)
  	index = indices[0]
  	return index
