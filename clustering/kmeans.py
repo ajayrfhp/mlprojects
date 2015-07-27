@@ -90,6 +90,8 @@ def buildModel(data,k):
 		p.axis([0, 5, 0,5])
 		p.show()		
 		time.sleep(0.5)
+		print pointCenters
+		print points
 	
 
 	return centres
