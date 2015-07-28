@@ -76,7 +76,7 @@ def buildModel(data,k):
 
 		#print centres	
 		flag = True
-		for i in range(len(newCenters[0])):
+		for i in range(k):
 			for j in range(len(newCenters[1])):
 				if(newNewCenter[i][j] != centres[i][j]):
 					flag = False
@@ -84,14 +84,17 @@ def buildModel(data,k):
 			break			
 		centres = newNewCenter	
 		p.clf()
-		centres = numpy.array(centres)	
+		centres = numpy.array(centres)
+		'''	
 		p.plot(data[:,0],data[:,1],'.')
 		p.plot(centres[:,0],centres[:,1],'bo')		
 		p.axis([0, 5, 0,5])
 		p.show()		
 		time.sleep(0.5)
+		'''
 		print pointCenters
 		print points
+		print "__________________"
 	
 
 	return centres
