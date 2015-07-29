@@ -28,6 +28,7 @@
 
 
 ##REFERENCECS
-[Collective-Intelligence-Book](http://www.amazon.com/Programming-Collective-Intelligence-Building-Applications/dp/0596529325)
-[Color extractor](http://charlesleifer.com/blog/using-python-and-k-means-to-find-the-dominant-colors-in-images/)
+* [Collective-Intelligence-Book](http://www.amazon.com/Programming-Collective-Intelligence-Building-Applications/dp/0596529325)
+
+* [Color extractor](http://charlesleifer.com/blog/using-python-and-k-means-to-find-the-dominant-colors-in-images/)
 
