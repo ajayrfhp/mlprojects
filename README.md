@@ -1,4 +1,4 @@
-#Movie Recommendation System
+#Machine Learning Hacks
 ##To Run:
      python -m movieRecommendationSystem
      python -m clustering
