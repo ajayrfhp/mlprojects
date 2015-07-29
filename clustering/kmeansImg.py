@@ -7,9 +7,7 @@ import matplotlib.pyplot as p
 
 def euclideanDistance(p1,p2):
 	distance = 0
-
-	for i in range(p1.shape[1]):
-		distance += abs(p1[0][i]-p2[0][i])
+	distance = sum(abs(p1 - p2))
 
 	return distance
 
@@ -29,84 +27,77 @@ def buildModel(data,k):
 	while(1):
 			# START WITH RANDOM CENTRES,COMPUTE SHORTEST CENTRE FOR EACH DATA POINT
 
-
-		pointCenters = {}
 		
+		pointCenters = {}
+
 		for i in points.keys():
 			minDistance = 999999999999999999
 			thisCenter = -1
 			for center in centres:
 				thisDistance = euclideanDistance(points[i],center)
-
+				
 				if(thisDistance < minDistance):
+
 					minDistance = thisDistance
 					thisCenter = center
-		
-		
 					#print "hi"
 				#print str(thisDistance) + str(thisCenter) 
 						
 			pointCenters[i] = thisCenter
 		
-
 		
 
-
-
-			
+		print pointCenters
 		
 		# point Centers contain the shortest centre from each point
-		newCenters = []
-
-
-
-
+		newCenter = []
 		for center in centres:
+			#print "-----------------------------"
+			#print center
+			thisCenter = numpy.zeros(points[key].shape[0])
+			for i in range(len(center)):
+				thisCenter.append(0)
+
 			cnt = 0
-			thisCenter = numpy.zeros((pointCenters[pointCenters.keys()[0]].shape))
-			for key in points.keys():
-				
+			for key in pointCenters.keys():
+				flag = True
+
 				if(numpy.array_equal(pointCenters[key],center)):
-					
-					for j in range(points[key].shape[1]):
+					#print points[key]
+					cnt +=1
+					print points[key]
+					print 
+					for dimension in range(points[key].shape[0]):
+						thisCenter[dimension] += points[key][dimension]
 
-						thisCenter[0][j] += points[key][0][j]
+			for dimension in range((points[key].shape[0])):
+						thisCenter[dimension] =  float(thisCenter[dimension])/cnt
+				
+				
+			newCenter.append(thisCenter)
 
+		#print centres	
 
+		
 
-				cnt += 1	
-
-			thisCenter /= cnt		
-
-			newCenters.append(thisCenter)	
-
-
-
-
-		if(numpy.array_equal(newCenters,centres)):
+		
+		if(numpy.array_equal(newCenter,centres)):
 			break
 
-
-		
-
-		
-	
-
-
-
-
-		centres = newCenters
-		'''
+		centres = newCenter	
 		p.clf()
-		centres = numpy.array(centres)	
+		centres = numpy.array(centres)
+		'''	
 		p.plot(data[:,0],data[:,1],'.')
 		p.plot(centres[:,0],centres[:,1],'bo')		
 		p.axis([0, 5, 0,5])
 		p.show()		
 		time.sleep(0.5)
 		'''
-
-		
+		print pointCenters
+		print points
+		print "__________________"
+	
 
 	return centres
 
