@@ -7,8 +7,9 @@ import matplotlib.pyplot as p
 
 def euclideanDistance(p1,p2):
 	distance = 0
-	for dimension  in range(p1.shape[0]):
-		distance += abs(p1[dimension] - p2[dimension])
+
+	distance = sum(abs(p1 - p2))
+
 	
 	return distance
 
@@ -32,6 +33,7 @@ def buildModel(data,k):
 			minDistance = 999999999999999999
 			thisCenter = -1
 			for center in centres:
+
 				thisDistance = euclideanDistance(points[i],center)
 				
 				if(thisDistance < minDistance):
@@ -42,6 +44,7 @@ def buildModel(data,k):
 						
 			pointCenters[i] = thisCenter
 		
+
 		
 
 	
@@ -69,6 +72,8 @@ def buildModel(data,k):
 					for dimension in range(points[key].shape[0]):
 						thisCenter[dimension] += points[key][dimension]
 
+			
+			
 			for dimension in range((points[key].shape[0])):
 						thisCenter[dimension] =  float(thisCenter[dimension])/cnt
 				
@@ -77,6 +82,9 @@ def buildModel(data,k):
 
 		#print centres	
 
+
+
+
 		
 
 		
@@ -84,7 +92,7 @@ def buildModel(data,k):
 			break
 
 		centres = newCenter	
-		p.clf()
+		#p.clf()
 		centres = numpy.array(centres)
 		'''	
 		p.plot(data[:,0],data[:,1],'.')
@@ -93,10 +101,9 @@ def buildModel(data,k):
 		p.show()		
 		time.sleep(0.5)
 		'''
-		print pointCenters
-		print points
-		print "__________________"
 	
+		#print "__________________"
+		
 
 	return centres
 

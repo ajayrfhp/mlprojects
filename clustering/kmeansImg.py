@@ -45,40 +45,41 @@ def buildModel(data,k):
 						
 			pointCenters[i] = thisCenter
 		
+
+
 		
 
-		print pointCenters
+
 		
 		# point Centers contain the shortest centre from each point
 		newCenter = []
 		for center in centres:
 			#print "-----------------------------"
 			#print center
-			thisCenter = numpy.zeros(points[key].shape[0])
-			for i in range(len(center)):
-				thisCenter.append(0)
+			thisCenter = numpy.zeros(points[points.keys()[0]].shape)
+			
 
 			cnt = 0
 			for key in pointCenters.keys():
-				flag = True
 
 				if(numpy.array_equal(pointCenters[key],center)):
 					#print points[key]
 					cnt +=1
-					print points[key]
-					print 
-					for dimension in range(points[key].shape[0]):
-						thisCenter[dimension] += points[key][dimension]
 
-			for dimension in range((points[key].shape[0])):
-						thisCenter[dimension] =  float(thisCenter[dimension])/cnt
-				
-				
+					thisCenter += points[key]
+			
+			
+			
+
+
+			thisCenter[0] = [ float(x) for x in thisCenter[0] ]		
+					
+			thisCenter /= cnt
+
+
 			newCenter.append(thisCenter)
 
-		#print centres	
 
-		
 
 		
 		if(numpy.array_equal(newCenter,centres)):
@@ -94,9 +95,8 @@ def buildModel(data,k):
 		p.show()		
 		time.sleep(0.5)
 		'''
-		print pointCenters
-		print points
-		print "__________________"
+	
+
 	
 
 	return centres

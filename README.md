@@ -14,6 +14,14 @@
 ######Clustering
 * Kmeans Clustering .
 
+![Image]( clustering/s1.jpg "Image")
+
+![Principal color ]( clustering/c1.png "Color Image")
+![Principal color ]( clustering/c2.png "Color Image")
+![Principal color ]( clustering/c3.png "Color Image")
+
+
+
 ![KMeans Cluster figure]( clustering/cluster.png "Cluster Centres Creation")
 
 
