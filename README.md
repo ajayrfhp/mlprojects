@@ -13,6 +13,8 @@
 
 ######Clustering
 * Kmeans Clustering .
+* Extracted Principal colors from the image .Its work in progress ,dont laugh :P
+* 
 
 ![Image]( clustering/s1.jpg "Image")
 
@@ -27,4 +29,5 @@
 
 ##REFERENCECS
 *[Collective-Intelligence-Book](http://www.amazon.com/Programming-Collective-Intelligence-Building-Applications/dp/0596529325)
+*[Color extractor](http://charlesleifer.com/blog/using-python-and-k-means-to-find-the-dominant-colors-in-images/)
 
