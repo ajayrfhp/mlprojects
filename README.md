@@ -14,7 +14,7 @@
 ######Clustering
 * Kmeans Clustering .
 * Extracted Principal colors from the image .Its work in progress ,dont laugh :P
-* 
+
 
 ![Image]( clustering/s1.jpg "Image")
 
