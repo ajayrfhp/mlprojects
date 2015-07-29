@@ -2,16 +2,16 @@ import matplotlib.pyplot as p
 import numpy 
 from numpy import *
 
-from kmeansImg	 import *
+from kmeans	 import *
 
 import numpy as np
 from PIL import Image
 
 
 
-#data = [[1,2],[2,2],[3,2],[2,3],[4,2]]
+data = [[1,2],[2,2],[3,2],[2,3],[4,2]]
 
-data = [[[1,2]],[[2,2]],[[3,2]],[[2,3]],[[4,2]]]
+#data = [[[1,2]],[[2,2]],[[3,2]],[[2,3]],[[4,2]]]
 
 #img = Image.open('clustering/s1.jpg')
 #data = np.array(img)
@@ -25,7 +25,7 @@ data = [[[1,2]],[[2,2]],[[3,2]],[[2,3]],[[4,2]]]
 
 data = numpy.array(data)
 
-centers = numpy.array(buildModel(data,3))
+centers = numpy.array(buildModel(data,2))
 
 
 

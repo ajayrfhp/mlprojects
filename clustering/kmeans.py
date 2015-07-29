@@ -27,7 +27,7 @@ def buildModel(data,k):
 
 		
 		pointCenters = {}
-		newCenters = []
+
 		for i in points.keys():
 			minDistance = 999999999999999999
 			thisCenter = -1
@@ -42,14 +42,13 @@ def buildModel(data,k):
 						
 			pointCenters[i] = thisCenter
 		
-			newCenters.append(tuple(thisCenter))
 		
 
-		newCenters = list(set(newCenters))	
+	
 		
 		# point Centers contain the shortest centre from each point
-		newNewCenter = []
-		for center in newCenters:
+		newCenter = []
+		for center in centres:
 			#print "-----------------------------"
 			#print center
 			thisCenter = []
@@ -74,20 +73,17 @@ def buildModel(data,k):
 						thisCenter[dimension] =  float(thisCenter[dimension])/cnt
 				
 				
-			newNewCenter.append(thisCenter)
+			newCenter.append(thisCenter)
 
 		#print centres	
 
 		
 
-		flag = True
-		for i in range(k):
-			for j in range(len(newCenters[1])):
-				if(newNewCenter[i][j] != centres[i][j]):
-					flag = False
-		if(flag == True):
-			break			
-		centres = newNewCenter	
+		
+		if(numpy.array_equal(newCenter,centres)):
+			break
+
+		centres = newCenter	
 		p.clf()
 		centres = numpy.array(centres)
 		'''	
