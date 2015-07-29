@@ -12,18 +12,18 @@ from PIL import Image
 
 data = [[[1,2]],[[2,2]],[[3,2]],[[2,3]],[[4,2]]]
 
-img = Image.open('clustering/s1.jpg')
-data = np.array(img)
+#img = Image.open('clustering/s1.jpg')
+#data = np.array(img)
 
 
 #data = [[[1,2,3]],[[2,27,42]],[[3,2,1]],[[240,250,3]],[[3,2,1]],[[3,2,1]],[[3,2,1]],[[3,2,1]],[[3,2,0]],[[2,3,0]],[[4,2,5]]]
 
 
 
-#data = numpy.array(data)
+data = numpy.array(data)
 
 centers = numpy.array(buildModel(data,3))
-
+print centers
 
 
 
