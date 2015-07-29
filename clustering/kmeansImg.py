@@ -7,9 +7,10 @@ import matplotlib.pyplot as p
 
 def euclideanDistance(p1,p2):
 	distance = 0
-	for dimension  in range(p1.shape[0]):
-		distance += abs(p1[dimension] - p2[dimension])
-	
+
+	for i in range(p1.shape[1]):
+		distance += abs(p1[0][i]-p2[0][i])
+
 	return distance
 
 
@@ -22,72 +23,80 @@ def buildModel(data,k):
 	
 	centres = data[0:k]
 
+
+
+
 	while(1):
 			# START WITH RANDOM CENTRES,COMPUTE SHORTEST CENTRE FOR EACH DATA POINT
 
-		
+
 		pointCenters = {}
-		newCenters = []
+		
 		for i in points.keys():
 			minDistance = 999999999999999999
 			thisCenter = -1
 			for center in centres:
 				thisDistance = euclideanDistance(points[i],center)
-				
+
 				if(thisDistance < minDistance):
 					minDistance = thisDistance
 					thisCenter = center
+		
+		
 					#print "hi"
 				#print str(thisDistance) + str(thisCenter) 
 						
 			pointCenters[i] = thisCenter
 		
-			newCenters.append(tuple(thisCenter))
+
 		
 
-		newCenters = list(set(newCenters))	
+
+
+			
 		
 		# point Centers contain the shortest centre from each point
-		newNewCenter = []
-		for center in newCenters:
-			#print "-----------------------------"
-			#print center
-			thisCenter = []
-			for i in range(len(center)):
-				thisCenter.append(0)
+		newCenters = []
 
+
+
+
+		for center in centres:
 			cnt = 0
-			for key in pointCenters.keys():
-				flag = True
-				for dimension in range(len(center)):
-					if(pointCenters[key][dimension] != center[dimension]):
-						flag = False
+			thisCenter = numpy.zeros((pointCenters[pointCenters.keys()[0]].shape))
+			for key in points.keys():
+				
+				if(numpy.array_equal(pointCenters[key],center)):
 					
-						
-				if(flag):
-					#print points[key]
-					cnt +=1
-					for dimension in range(points[key].shape[0]):
-						thisCenter[dimension] += points[key][dimension]
+					for j in range(points[key].shape[1]):
 
-			for dimension in range((points[key].shape[0])):
-						thisCenter[dimension] =  float(thisCenter[dimension])/cnt
-				
-				
-			newNewCenter.append(thisCenter)
+						thisCenter[0][j] += points[key][0][j]
 
-		#print centres	
+
+
+				cnt += 1	
+
+			thisCenter /= cnt		
+
+			newCenters.append(thisCenter)	
+
+
+
+
+		if(numpy.array_equal(newCenters,centres)):
+			break
+
 
 		
 
-		flag = True
-		for i in range(len(newCenters[0])):
-			for j in range(len(newCenters[1])):
-				if(newNewCenter[i][j] != centres[i][j]):
-					flag = False
-		if(flag == True):
-			break			
-		centres = newNewCenter	
+		
+	
+
+
+
+
+		centres = newCenters
+		'''
 		p.clf()
 		centres = numpy.array(centres)	
 		p.plot(data[:,0],data[:,1],'.')
@@ -95,9 +104,9 @@ def buildModel(data,k):
 		p.axis([0, 5, 0,5])
 		p.show()		
 		time.sleep(0.5)
-		print pointCenters
-		print points
-	
+		'''
+
+		
 
 	return centres
 
