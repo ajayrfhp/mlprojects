@@ -1,11 +1,16 @@
 import matplotlib.pyplot as p
 import numpy 
 from numpy import *
-
 from kmeans	 import *
-
 import numpy as np
 from PIL import Image
+import sys
+
+def rgb_to_hex(rgb):
+  r = rgb[0]
+  g = rgb[1]
+  b = rgb[2]
+  return '#%02X%02X%02X' % (r,g,b)
 
 
 
@@ -17,7 +22,7 @@ from PIL import Image
 
 #print data.shape
 
-img = Image.open('clustering/s1.jpg')
+img = Image.open(sys.argv[1])
 data = np.array(img)
 
 data2 = []
@@ -38,12 +43,17 @@ print data2.shape
 
 
 
-centers = numpy.array(buildModel(data2,2))
+centers = numpy.array(buildModel(data2,3))
 
 
+for center in centers:
 
-print centers
-print centers.shape
+	print rgb_to_hex(center)
+
+#print centers
+#print centers.shape
+
+
 
 
 	

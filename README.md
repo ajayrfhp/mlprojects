@@ -15,12 +15,20 @@
 * Kmeans Clustering .
 * Extracted Principal colors from the image .Its work in progress ,dont laugh :P
 
+* Image Source is Charles Leifer's Awesome Article .I am a lazy dog,no T-Rex ,so used the same images .
 
 ![Image]( clustering/s1.jpg "Image")
 
 ![Principal color ]( clustering/c1.png "Color Image")
 ![Principal color ]( clustering/c2.png "Color Image")
 ![Principal color ]( clustering/c3.png "Color Image")
+
+
+![Image]( clustering/s2.png "Image")
+
+![Principal color ]( clustering/c11.png "Color Image")
+
+
 
 
 
