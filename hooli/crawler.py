@@ -21,6 +21,7 @@ class crawler():
 		
 		links = soup.find_all('a')
 		for link in links:
+			print self.cnt,url,link.get('href')
 			parsedUrl = rewrite(url,link.get('href'))
 			if(parsedUrl != None):
 				if(parsedUrl.count('pdf') != 0 ):
@@ -30,7 +31,7 @@ class crawler():
 					return 
 				self.cnt += 1
 				self.linkMap[parsedUrl] = 1
-				print self.cnt,parsedUrl
+				
 				try:
 					self.crawl(parsedUrl)
 				#except  urllib2.HTTPError :	

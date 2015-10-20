@@ -42,7 +42,6 @@
 '''
 
 def rewrite(parent,url):
-
 	if( parent.count('nitt.edu') == 0 ):
 		return 
 	if( url == None ):
@@ -52,29 +51,35 @@ def rewrite(parent,url):
 	if( url.count('.exe') >=1 ):
 		return 
 	if(url[0] == '.'):
-		url = dotParse(parent,url)
-	
-		
-
+		answerUrl = dotParse(parent,url)
+		if(answerUrl != None): 
+			url = answerUrl 
+		else:
+			return None
 	if( url[0:8] != 'https://' and url[0:7] != 'http://'):
 		if(url.find('/')==-1):
 			url = '/' + url
 		url = 'http://www.nitt.edu' + url
-	
-
-
 	return url		
 
 
 def dotParse(p,c):
-	if(c[0] != '.'):
-		return 
 	if(p[-1] == '/' and c[0] == '/' ):
 		p = p[:-1]		
+	if( p.split('/')[:-c.count('../')][-1] == c[c.rfind('/')+1:]):
+		return None
+		
 
-	if( p.split('/')[:-c.count('../')][-1] == c[c.rfind('/')+1:]  ):
-		return 
-
-	if(c.find('/') == 1):
+	if(c == './' ):
+		if(p.split('/')[:-c.count('../')][-1] == c[c.rfind('/')+1:]):
+			return None
 		return str(p) + str(c[1:])
+	
+
+	if(c[:2] == './' ):
+		c = c[2:]
+
+
+
+
 	return '/'.join(p.split('/')[:-c.count('../')]) + '/' + str(c[c.rfind('/')+1:])	 	
